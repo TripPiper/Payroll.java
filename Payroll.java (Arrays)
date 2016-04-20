@@ -1,0 +1,106 @@
+import java.util.Scanner;
+
+/**
+ *
+ * @author gwendolynsandy
+ */
+public class Payroll1 {
+
+    public int[] employeeId = {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
+    /*Create an hours field that is an array of seven integers to hold hours worked each week.*/
+    public int[] hours = new int[7];
+    /*Create a field called payRate which holds an array of seven doubles to hold employee's hourly pay rate.*/
+    public double[] payRate = new double[7];
+    /*Create a wages field that holds an array of seven doubles to hold employee's gross wages.*/
+    public double[] wages = new double[7];
+
+   
+    Payroll1[] pay = new Payroll1[7];
+
+    public Payroll1() {
+
+    }
+    //Add appropriate accessor and mutator methods.
+
+    public void setEmployeeId(int[] employeeId) {
+        employeeId = employeeId;
+    }
+
+    public int getEmployeeId(int indexNum) {
+        return employeeId[indexNum];
+    }
+
+    public void setPayRate(double[] array) {
+        // Create Scanner object for keyboard input.
+        Scanner keyboard = new Scanner(System.in);
+
+        for (int i = 0; i < 7; i++) {
+            pay[i] = new Payroll1();
+            System.out.println("Enter payrate for Employee #" + employeeId[i]);
+            payRate[i] = keyboard.nextDouble();
+
+            if (payRate[i] < 6.0) {
+                System.out.println(" Enter amount larger then $6. ");
+                payRate[i] = keyboard.nextDouble();
+
+            }
+        }
+    }
+
+    public void setHours(int[] arrayHours) {
+
+        // Create Scanner object for keyboard input.
+        Scanner keyboard = new Scanner(System.in);
+
+        for (int j = 0; j < 7; j++) {
+
+            System.out.println("Enter hours worked for Employee #" + employeeId[j]);
+            hours[j] = keyboard.nextInt();
+
+            if (hours[j] < 0) {
+                System.out.println(" Enter a positive number. ");
+                hours[j] = keyboard.nextInt();
+
+            }
+
+        }
+    }
+
+    public void setWages(int indexNum, double wages1) {
+        wages[indexNum] = wages1;
+    }
+
+    public int[] getHours() {
+
+        return hours;
+
+    }
+
+    public double[] getPayRate() {
+
+        return payRate;
+    }
+
+    public double[] getWages() {
+
+        return wages;
+    }
+
+    /*Create a method that that accepts an employee's id number as 
+    an argument and returns the gross pay.*/
+    public double getGrossPay(int empId) {
+        double grossPay = 0;
+        int i = 0;
+        for (int value : employeeId) {
+            if (value == empId) {
+                wages[i] = hours[i] * payRate[i];
+                grossPay = wages[i];
+
+            }
+            i++;
+
+        }
+        return grossPay;
+
+    }
+}
