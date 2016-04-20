@@ -1,0 +1,23 @@
+public class PayrollDemo1 {
+
+    public static void main(String[] args) {
+
+        Payroll1 test = new Payroll1();
+
+        int employeeId = 0;
+
+        double[] demoP = new double[7];
+        test.setPayRate(demoP);
+        int[] demoH = new int[7];
+        test.setHours(demoH);
+
+        for (int m = 0; m < 7; m++) {
+            employeeId = test.getEmployeeId(m);
+            System.out.println("Employee ID :" + employeeId);
+
+            System.out.println("Gross Wages : " + test.getGrossPay(employeeId));
+
+        }
+
+    }
+}
